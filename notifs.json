@@ -1,0 +1,12 @@
+[
+  {
+    "description": "A channel that sends notifications via email",
+    "displayName": "email notifications",
+    "enabled": true,
+    "labels": {
+      "email_address": "stevedepp@hotmail.com"
+    },
+    "name": "projects/gcp-mon-log-depp/notificationChannels/8941122835432379004",
+    "type": "email"
+  }
+]

@@ -17,7 +17,7 @@
                 ],
                 "comparison": "COMPARISON_GT",
                 "duration": "60s",
-                "filter": "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\" resource.type=\"gce_instance\" metric.label.\"check_id\"=\"bobs-uptime\"",
+                "filter": "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\" resource.type=\"gce_instance\" metric.label.\"check_id\"=\"larrys-uptime\"",
                 "thresholdValue": 1.0,
                 "trigger": {
                     "count": 1
@@ -26,7 +26,7 @@
         }
     ],
     "notificationChannels": [
-        "projects/msds434day2day/notificationChannels/12537224357492342494"
+        "projects/gcp-mon-log-depp/notificationChannels/8941122835432379004"
     ],
 }
 

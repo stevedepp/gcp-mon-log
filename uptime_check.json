@@ -3,9 +3,9 @@
   "monitoredResource": {
     "type": "gce_instance",
     "labels": {
-      "instance_id": "5596309257474611597",
+      "instance_id": "6729177800294582933",
       "zone": "us-central1-a"
     }
   },
-  "displayName": "bobs uptime"
+  "displayName": "larrys uptime"
 }
