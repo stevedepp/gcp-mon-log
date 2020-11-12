@@ -1,0 +1,26 @@
+{
+    "displayName": "Network packets [RATE]",
+    "combiner": "OR",
+    "conditions": [
+        {
+            "displayName": "Network traffic > 500 for 1 minute",
+            "conditionThreshold": {
+                "aggregations": [
+                    {
+                        "alignmentPeriod": "300s",
+                        "perSeriesAligner": "ALIGN_RATE"
+                    }
+                ],
+                "comparison": "COMPARISON_GT",
+                "duration": "60s",
+                "filter": "metric.type=\"agent.googleapis.com/interface/packets\"
+                          AND resource.type=\"gce_instance\"",
+                "thresholdValue": 500.0,
+                "trigger": {
+                    "count": 1
+                }
+            }
+        },
+    ],
+    "notificationChannels": "projects/msds434day2day/notificationChannels/12537224357492342494"
+}

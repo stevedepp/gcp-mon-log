@@ -1,0 +1,11 @@
+{
+  "httpCheck": {},
+  "monitoredResource": {
+    "type": "gce_instance",
+    "labels": {
+      "instance_id": "5596309257474611597",
+      "zone": "us-central1-a"
+    }
+  },
+  "displayName": "bobs uptime"
+}

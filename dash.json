@@ -1,0 +1,65 @@
+{
+    "displayName": "larrys dashboard",
+    "gridLayout": {
+        "columns": "2",
+        "widgets": [
+            {
+                "title": "cpu load",
+                "xyChart": {
+                    "chartOptions": {
+                        "mode": "COLOR"
+                    },
+                    "dataSets": [
+                        {
+                            "minAlignmentPeriod": "60s",
+                            "plotType": "LINE",
+                            "timeSeriesQuery": {
+                                "timeSeriesFilter": {
+                                    "aggregation": {
+                                        "perSeriesAligner": "ALIGN_MEAN"
+                                    },
+                                    "filter": "metric.type=\"agent.googleapis.com/cpu/load_1m\" resource.type=\"gce_instance\""
+                                },
+                                "unitOverride": "1"
+                            }
+                        }
+                    ],
+                    "timeshiftDuration": "0s",
+                    "yAxis": {
+                        "label": "y1Axis",
+                        "scale": "LINEAR"
+                    }
+                }
+            },
+            {
+                "title": "VM Instance - Received packets [RATE]",
+                "xyChart": {
+                    "chartOptions": {
+                        "mode": "COLOR"
+                    },
+                    "dataSets": [
+                        {
+                            "minAlignmentPeriod": "60s",
+                            "plotType": "LINE",
+                            "timeSeriesQuery": {
+                                "timeSeriesFilter": {
+                                    "aggregation": {
+                                        "perSeriesAligner": "ALIGN_RATE"
+                                    },
+                                    "filter": "metric.type=\"compute.googleapis.com/instance/network/received_packets_count\" resource.type=\"gce_instance\"",
+                                    "secondaryAggregation": {}
+                                },
+                                "unitOverride": "1"
+                            }
+                        }
+                    ],
+                    "timeshiftDuration": "0s",
+                    "yAxis": {
+                        "label": "y1Axis",
+                        "scale": "LINEAR"
+                    }
+                }
+            }
+        ]
+    },
+}

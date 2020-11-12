@@ -1,0 +1,11 @@
+{
+  "httpCheck": {},
+  "monitoredResource": {
+    "type": "gce_instance",
+    "labels": {
+      "instance_id": "variable",
+      "zone": "us-central1-a"
+    }
+  },
+  "displayName": "larrys uptime"
+}

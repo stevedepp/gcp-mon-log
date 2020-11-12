@@ -1,0 +1,32 @@
+{
+    "displayName": "Uptime Health Check on uptime",
+    "combiner": "OR",
+    "conditions": [
+        {
+            "displayName": "Uptime not for 60 seconds",
+            "conditionThreshold": {
+                "aggregations": [
+                    {
+                        "alignmentPeriod": "1200s",
+                        "crossSeriesReducer": "REDUCE_COUNT_FALSE",
+                        "groupByFields": [
+                            "resource.*"
+                        ],
+                        "perSeriesAligner": "ALIGN_NEXT_OLDER"
+                    }
+                ],
+                "comparison": "COMPARISON_GT",
+                "duration": "60s",
+                "filter": "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\" resource.type=\"gce_instance\" metric.label.\"check_id\"=\"bobs-uptime\"",
+                "thresholdValue": 1.0,
+                "trigger": {
+                    "count": 1
+                }
+            },
+        }
+    ],
+    "notificationChannels": [
+        "variable"
+    ],
+}
+

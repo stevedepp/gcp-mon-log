@@ -1,0 +1,8 @@
+{
+    "type": "email",
+    "displayName": "email notifications",
+    "description": "A channel that sends notifications via email",
+    "labels": {
+        "email_address": "stevedepp@hotmail.com"
+    },
+}
