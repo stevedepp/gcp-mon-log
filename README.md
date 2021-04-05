@@ -129,8 +129,7 @@ stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-logging-agent
 stevedepp@larry:~$ sudo bash add-logging-agent-repo.sh
 stevedepp@larry:~$ sudo apt-get update
 
-<img width="682" alt="-cloud-packages-archive-keyring" src="https://user-images.githubusercontent.com/38410965/113598954-e4a8b380-960b-11eb-8720-3010bfa680be.png">![Google Cloud](https://user-images.githubusercontent.com/38410965/113599387-8af4b900-960c-11eb-92bc-9744a8db6f26.png)
-
+<img width="682" alt="-cloud-packages-archive-keyring" src="https://user-images.githubusercontent.com/38410965/113598954-e4a8b380-960b-11eb-8720-3010bfa680be.png">
 
 #
 
