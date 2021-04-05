@@ -20,9 +20,9 @@ please click on the video below for sound.
 - [x] clone my repo   
 - [x] cd into the repo   
 
-➜  `gcp-mon-log git:(main) cd Documents/Personal/MSDS/434/week\ 09/   
-➜  `gcp-mon-log git:(main) git clone https://github.com/stevedepp/gcp-mon-log.git   
-➜  `gcp-mon-log git:(main) cd gcp-mon-log   
+`➜  gcp-mon-log git:(main) cd Documents/Personal/MSDS/434/week\ 09/`   
+`➜  gcp-mon-log git:(main) git clone https://github.com/stevedepp/gcp-mon-log.git`   
+`➜  gcp-mon-log git:(main) cd gcp-mon-log`   
 
 <img width="682" alt="remote Total 14 (delta 5), reused 10 (delta 4), pack-reused 0" src="https://user-images.githubusercontent.com/38410965/113597987-79121680-960a-11eb-88d0-66c0aa6fbf74.png">
 
@@ -41,14 +41,14 @@ please click on the video below for sound.
 - [x] export account id   
 - [x] associated project with account for billing      
 
-➜  `gcp-mon-log git:(main) gcloud alpha billing accounts list   
-➜  `gcp-mon-log git:(main) gcloud projects list   
-➜  `gcp-mon-log git:(main) gcloud projects create gcp-mon-log-depp    
-➜  `gcp-mon-log git:(main) gcloud config set project gcp-mon-log-depp   
-➜  `gcp-mon-log git:(main) gcloud config get-value core/project    
-➜  `gcp-mon-log git:(main) export PROJECT=$(gcloud config get-value core/project)   
-➜  `gcp-mon-log git:(main) export ACCOUNT=$(gcloud alpha billing accounts list | awk 'NR==2{print $1}')   
-➜  `gcp-mon-log git:(main) gcloud beta billing projects link $PROJECT --billing-account $ACCOUNT    
+`➜  gcp-mon-log git:(main) gcloud alpha billing accounts list`   
+`➜  gcp-mon-log git:(main) gcloud projects list`   
+`➜  gcp-mon-log git:(main) gcloud projects create gcp-mon-log-depp`    
+`➜  gcp-mon-log git:(main) gcloud config set project gcp-mon-log-depp`   
+`➜  gcp-mon-log git:(main) gcloud config get-value core/project`    
+`➜  gcp-mon-log git:(main) export PROJECT=$(gcloud config get-value core/project)`   
+`➜  gcp-mon-log git:(main) export ACCOUNT=$(gcloud alpha billing accounts list | awk 'NR==2{print $1}')`   
+`➜  gcp-mon-log git:(main) gcloud beta billing projects link $PROJECT --billing-account $ACCOUNT`    
 
 <img width="682" alt="billinpEnabled true" src="https://user-images.githubusercontent.com/38410965/113598570-52a0ab00-960b-11eb-8329-85e1f363e86d.png">
 
@@ -66,11 +66,11 @@ please click on the video below for sound.
 - [x] make INSTANCE an environment variable for instance-id   
 
 `➜  gcp-mon-log git:(main) gcloud services list --available | grep 'compute'`   
-➜  gcp-mon-log git:(main) gcloud services enable compute.googleapis.com   
-➜  gcp-mon-log git:(main) gcloud compute zones list | grep 'us-centr'   
-➜  gcp-mon-log git:(main) gcloud compute machine-types list --zones us-central1-a | grep 'n1-standard'   
-➜  gcp-mon-log git:(main) gcloud compute instances create larry --boot-disk-device-name debian-cloud --zone us-central1-a --machine-type n1-standard-1 --tags http-server --scopes cloud-platform   
-➜  gcp-mon-log git:(main) export INSTANCE=$(gcloud compute instances describe larry --zone us-central1-a --format="value(id)")   
+`➜  gcp-mon-log git:(main) gcloud services enable compute.googleapis.com`   
+`➜  gcp-mon-log git:(main) gcloud compute zones list | grep 'us-centr'`   
+`➜  gcp-mon-log git:(main) gcloud compute machine-types list --zones us-central1-a | grep 'n1-standard'`   
+`➜  gcp-mon-log git:(main) gcloud compute instances create larry --boot-disk-device-name debian-cloud --zone us-central1-a --machine-type n1-standard-1 --tags http-server --scopes cloud-platform`   
+`➜  gcp-mon-log git:(main) export INSTANCE=$(gcloud compute instances describe larry --zone us-central1-a --format="value(id)")`   
 
 <img width="682" alt="list --available grep" src="https://user-images.githubusercontent.com/38410965/113598780-a612f900-960b-11eb-8e6d-b3e839e5e11d.png">
 
@@ -85,9 +85,9 @@ Advantage:  If create a named firewall then can control which instances get whic
 - [x] make EXTERNAL_IP an environment variable   
 - [x] ssh into compute instance   
    
-➜  gcp-mon-log git:(main) gcloud compute --project $PROJECT firewall-rules create default-allow-http --target-tags=http-server --action=ALLOW --rules=tcp:80   
-➜  gcp-mon-log git:(main) export EXTERNAL_IP=$(gcloud compute instances list --project $PROJECT | awk 'NR==2{print $5}')   
-➜  gcp-mon-log git:(main) gcloud compute ssh larry --zone us-central1-a   
+`➜  gcp-mon-log git:(main) gcloud compute --project $PROJECT firewall-rules create default-allow-http --target-tags=http-server --action=ALLOW --rules=tcp:80`   
+`➜  gcp-mon-log git:(main) export EXTERNAL_IP=$(gcloud compute instances list --project $PROJECT | awk 'NR==2{print $5}')`   
+`➜  gcp-mon-log git:(main) gcloud compute ssh larry --zone us-central1-a`   
 
 <img width="682" alt="waiting for SSH key to propagate" src="https://user-images.githubusercontent.com/38410965/113598811-b4f9ab80-960b-11eb-8308-060409db6b02.png">
 
@@ -101,10 +101,10 @@ Advantage:  If create a named firewall then can control which instances get whic
 - [x] confirm serving HTTP traffic   
 
 `stevedepp@larry:~$ sudo apt-get update`   
-stevedepp@larry:~$sudo apt-get install apache2 php7.0   
-y   
-stevedepp@larry:~$ sudo service apache2 restart   
-stevedepp@larry:~$ curl http://34.123.20.84   
+`stevedepp@larry:~$sudo apt-get install apache2 php7.0`   
+`y`   
+`stevedepp@larry:~$ sudo service apache2 restart`   
+`stevedepp@larry:~$ curl http://34.123.20.84`   
 
 <img width="682" alt="the exact distribution terms for each program are described in the" src="https://user-images.githubusercontent.com/38410965/113598868-c642b800-960b-11eb-8bf4-22dec37c87a7.png">
 
@@ -121,11 +121,11 @@ stevedepp@larry:~$ curl http://34.123.20.84
 - [x] install the monitoring agent   
 - [x] start the monitoring agent   
 
-stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh   
-stevedepp@larry:~$ sudo bash add-monitoring-agent-repo.sh   
-stevedepp@larry:~$ sudo apt-get update   
-stevedepp@larry:~$ sudo apt-get install stackdriver-agent   
-stevedepp@larry:~$ sudo service stackdriver-agent start   
+`stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh`   
+`stevedepp@larry:~$ sudo bash add-monitoring-agent-repo.sh`   
+`stevedepp@larry:~$ sudo apt-get update`   
+`stevedepp@larry:~$ sudo apt-get install stackdriver-agent`   
+`stevedepp@larry:~$ sudo service stackdriver-agent start`   
 
 <img width="682" alt="Hit3 httpdeb debian orgdebian buster InRelease" src="https://user-images.githubusercontent.com/38410965/113598918-d9558800-960b-11eb-92a6-7ecc9a18b7ae.png">
 
@@ -138,9 +138,9 @@ stevedepp@larry:~$ sudo service stackdriver-agent start
 - [x] curl cloud logging agent repo   
 - [x] add & update logging agent   
 
-stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh   
-stevedepp@larry:~$ sudo bash add-logging-agent-repo.sh   
-stevedepp@larry:~$ sudo apt-get update   
+`stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh`   
+`stevedepp@larry:~$ sudo bash add-logging-agent-repo.sh`   
+`stevedepp@larry:~$ sudo apt-get update`   
 
 <img width="682" alt="-cloud-packages-archive-keyring" src="https://user-images.githubusercontent.com/38410965/113598954-e4a8b380-960b-11eb-8720-3010bfa680be.png">
 
@@ -152,9 +152,9 @@ stevedepp@larry:~$ sudo apt-get update
 - [x] set to structured logs   
 - [x] start the logging agent   
 
-stevedepp@larry:~$ sudo apt-get install google-fluentd   
-stevedepp@larry:~$ sudo apt-get install google-fluentd-catch-all-config-structured   
-stevedepp@larry:~$ sudo service google-fluentd start   
+`stevedepp@larry:~$ sudo apt-get install google-fluentd`   
+`stevedepp@larry:~$ sudo apt-get install google-fluentd-catch-all-config-structured`   
+`stevedepp@larry:~$ sudo service google-fluentd start`   
 
 <img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599159-394c2e80-960c-11eb-99d8-1e2ce6bfa018.png">
 
