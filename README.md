@@ -86,7 +86,7 @@ Advantage:  If create a named firewall then can control which instances get whic
 - [x] ssh into compute instance   
    
 ➜  gcp-mon-log git:(main) gcloud compute --project $PROJECT firewall-rules create default-allow-http --target-tags=http-server --action=ALLOW --rules=tcp:80   
-➜  gcp-mon-log git:(main) export EXTERNAL_IP=$(gcloud compute instances list --project $PROJECT | awk 'NR==2{print $5}')
+➜  gcp-mon-log git:(main) export EXTERNAL_IP=$(gcloud compute instances list --project $PROJECT | awk 'NR==2{print $5}')   
 ➜  gcp-mon-log git:(main) gcloud compute ssh larry --zone us-central1-a   
 
 <img width="682" alt="waiting for SSH key to propagate" src="https://user-images.githubusercontent.com/38410965/113598811-b4f9ab80-960b-11eb-8308-060409db6b02.png">
@@ -100,7 +100,7 @@ Advantage:  If create a named firewall then can control which instances get whic
 - [x] install apache server    
 - [x] confirm serving HTTP traffic   
 
-stevedepp@larry:~$ sudo apt-get update   
+`stevedepp@larry:~$ sudo apt-get update`   
 stevedepp@larry:~$sudo apt-get install apache2 php7.0   
 y   
 stevedepp@larry:~$ sudo service apache2 restart   
