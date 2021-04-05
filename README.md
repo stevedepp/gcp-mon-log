@@ -129,7 +129,7 @@ stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-logging-agent
 stevedepp@larry:~$ sudo bash add-logging-agent-repo.sh
 stevedepp@larry:~$ sudo apt-get update
 
-<img width="682" alt="-cloud-packages-archive-keyring" src="https://user-images.githubusercontent.com/38410965/113598954-e4a8b380-960b-11eb-8720-3010bfa680be.png">![Uploading gcp-mon-log.png…]()
+<img width="682" alt="-cloud-packages-archive-keyring" src="https://user-images.githubusercontent.com/38410965/113598954-e4a8b380-960b-11eb-8720-3010bfa680be.png"><img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599100-220d4100-960c-11eb-8c14-e19f4b967679.png">
 
 
 #
@@ -144,7 +144,7 @@ stevedepp@larry:~$ sudo apt-get install google-fluentd
 stevedepp@larry:~$ sudo apt-get install google-fluentd-catch-all-config-structured
 stevedepp@larry:~$ sudo service google-fluentd start
 
-<img width="682" alt="Hit3 httpdeb debian orgdebian buster InRelease" src="https://user-images.githubusercontent.com/38410965/113598918-d9558800-960b-11eb-92a6-7ecc9a18b7ae.png">
+<img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599159-394c2e80-960c-11eb-99d8-1e2ce6bfa018.png">
 
 #
 
@@ -152,6 +152,9 @@ Create a Monitoring Workspace
 
 This can only be done from console.
 
+![Google Cloud](https://user-images.githubusercontent.com/38410965/113599195-4701b400-960c-11eb-9269-567ffcbaece2.png)
+
+<img width="952" alt="© Google Cloud Platform sta" src="https://user-images.githubusercontent.com/38410965/113599211-4bc66800-960c-11eb-8019-6b226ab126be.png">
 
 #
 
