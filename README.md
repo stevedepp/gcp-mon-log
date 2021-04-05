@@ -20,9 +20,9 @@ please click on the video below for sound.
 - [x] clone my repo   
 - [x] cd into the repo   
 
-➜  gcp-mon-log git:(main) cd Documents/Personal/MSDS/434/week\ 09/   
-➜  gcp-mon-log git:(main) git clone https://github.com/stevedepp/gcp-mon-log.git   
-➜  gcp-mon-log git:(main) cd gcp-mon-log   
+➜  `gcp-mon-log git:(main) cd Documents/Personal/MSDS/434/week\ 09/   
+➜  `gcp-mon-log git:(main) git clone https://github.com/stevedepp/gcp-mon-log.git   
+➜  `gcp-mon-log git:(main) cd gcp-mon-log   
 
 <img width="682" alt="remote Total 14 (delta 5), reused 10 (delta 4), pack-reused 0" src="https://user-images.githubusercontent.com/38410965/113597987-79121680-960a-11eb-88d0-66c0aa6fbf74.png">
 
@@ -41,14 +41,14 @@ please click on the video below for sound.
 - [x] export account id   
 - [x] associated project with account for billing      
 
-➜  gcp-mon-log git:(main) gcloud alpha billing accounts list   
-➜  gcp-mon-log git:(main) gcloud projects list   
-➜  gcp-mon-log git:(main) gcloud projects create gcp-mon-log-depp    
-➜  gcp-mon-log git:(main) gcloud config set project gcp-mon-log-depp   
-➜  gcp-mon-log git:(main) gcloud config get-value core/project    
-➜  gcp-mon-log git:(main) export PROJECT=$(gcloud config get-value core/project)   
-➜  gcp-mon-log git:(main) export ACCOUNT=$(gcloud alpha billing accounts list | awk 'NR==2{print $1}')   
-➜  gcp-mon-log git:(main) gcloud beta billing projects link $PROJECT --billing-account $ACCOUNT    
+➜  `gcp-mon-log git:(main) gcloud alpha billing accounts list   
+➜  `gcp-mon-log git:(main) gcloud projects list   
+➜  `gcp-mon-log git:(main) gcloud projects create gcp-mon-log-depp    
+➜  `gcp-mon-log git:(main) gcloud config set project gcp-mon-log-depp   
+➜  `gcp-mon-log git:(main) gcloud config get-value core/project    
+➜  `gcp-mon-log git:(main) export PROJECT=$(gcloud config get-value core/project)   
+➜  `gcp-mon-log git:(main) export ACCOUNT=$(gcloud alpha billing accounts list | awk 'NR==2{print $1}')   
+➜  `gcp-mon-log git:(main) gcloud beta billing projects link $PROJECT --billing-account $ACCOUNT    
 
 <img width="682" alt="billinpEnabled true" src="https://user-images.githubusercontent.com/38410965/113598570-52a0ab00-960b-11eb-8329-85e1f363e86d.png">
 
@@ -65,7 +65,7 @@ please click on the video below for sound.
 - [x] create compute instance “larry”   
 - [x] make INSTANCE an environment variable for instance-id   
 
-➜  gcp-mon-log git:(main) gcloud services list --available | grep 'compute'   
+`➜  gcp-mon-log git:(main) gcloud services list --available | grep 'compute'`   
 ➜  gcp-mon-log git:(main) gcloud services enable compute.googleapis.com   
 ➜  gcp-mon-log git:(main) gcloud compute zones list | grep 'us-centr'   
 ➜  gcp-mon-log git:(main) gcloud compute machine-types list --zones us-central1-a | grep 'n1-standard'   
