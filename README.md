@@ -259,7 +259,7 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 #
 
-> the latter is an uptime check and the policy is configured so that if the instance is not running for 60 seconds I get an email.  So here I shut the instance down at the command line and receive an email about 2 minutes later
+> The latter is an uptime check. And the policy is configured so that if the instance is not running for 60 seconds, I get an email.  So, here I shut the instance down at the command line, and receive an email about 2 minutes later
 
 ### Test uptime check & email notification 
 
@@ -274,7 +274,7 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 #
 
-> 
+> And here, I start it back up again, and get an email about 30 minutes later.
 
 ### Test curing uptime check & email notification 
 
@@ -289,7 +289,7 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 #
 
-> 
+> We can make a dashboard with a line of code.  The rest here is just an echo of the configuration.
 
 ### Make a dashboard
 
@@ -305,7 +305,7 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 #
 
-> so you could pass someone that yaml or json file containing the config if they like yours
+> So, you could pass someone that yaml or json file containing the config if they like yours.
 
 ### Look at dashboard
 
@@ -315,7 +315,7 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 #
 
-> Finally tear it all down.  Thank you for watching. 
+> Finally, tear it all down.  Thank you for watching. 
 
 ### Tear it down
 delete dashboard DASH
