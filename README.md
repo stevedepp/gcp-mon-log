@@ -208,11 +208,11 @@ This can only be done from console.
 - [x] create an email notification   
 - [x] make EMAIL_NOTIFICATION an environment variable   
 
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels create --channel-content-from-file email-notification.json   
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels list   
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels --format json list > notifs.json   
-➜  gcp-mon-log git:(main) export EMAIL_NOTIFICATION=( $(jq -r '.[].name' notifs.json) )   
-➜  gcp-mon-log git:(main) echo $EMAIL_NOTIFICATION   
+`➜  gcp-mon-log git:(main) gcloud beta monitoring channels create --channel-content-from-file email-notification.json`   
+`➜  gcp-mon-log git:(main) gcloud beta monitoring channels list`   
+`➜  gcp-mon-log git:(main) gcloud beta monitoring channels --format json list > notifs.json`   
+`➜  gcp-mon-log git:(main) export EMAIL_NOTIFICATION=( $(jq -r '.[].name' notifs.json) )`   
+`➜  gcp-mon-log git:(main) echo $EMAIL_NOTIFICATION`   
 
 <img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599776-166e4a00-960d-11eb-8d5a-ab033151cbd0.png">
 
@@ -225,11 +225,11 @@ This can only be done from console.
 - [x] amend uptime check template for the new notification id   
 - [x] curl the API to create an uptime check   
 
-➜  gcp-mon-log git:(main) sed 's|variable|'$INSTANCE'|g' uptime_check_template.json > uptime_check.json   
-➜  gcp-mon-log git:(main) curl -X POST \
+`➜  gcp-mon-log git:(main) sed 's|variable|'$INSTANCE'|g' uptime_check_template.json > uptime_check.json`   
+`➜  gcp-mon-log git:(main) curl -X POST \
 -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
 -H "Content-Type: application/json; charset=utf-8" \
-https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @uptime_check.json    
+https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @uptime_check.json`    
 
 <img width="682" alt="curl - POST" src="https://user-images.githubusercontent.com/38410965/113599786-1cfcc180-960d-11eb-9d69-11e1733ce994.png">
 
@@ -245,13 +245,13 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 - [x] create network packets policy   
 - [x] make POLICY_1 and POLICY_2 environment variables   
 
-➜  gcp-mon-log git:(main) sed 's|variable|'$EMAIL_NOTIFICATION'|g' uptime_policy_template.json > uptime_policy.json   
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies create --policy-from-file uptime_policy.json   
-➜  gcp-mon-log git:(main) sed 's|variable|'$EMAIL_NOTIFICATION'|g' rising_network_packets_policy_template.json > rising_network_packets_policy.json   
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies create --policy-from-file rising_network_packets_policy.json   
-➜  gcp-mon-log git:(main) export POLICY_1=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==1')   
-➜  gcp-mon-log git:(main) export POLICY_2=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==2')   
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies list   
+`➜  gcp-mon-log git:(main) sed 's|variable|'$EMAIL_NOTIFICATION'|g' uptime_policy_template.json > uptime_policy.json`   
+`➜  gcp-mon-log git:(main) gcloud alpha monitoring policies create --policy-from-file uptime_policy.json`   
+`➜  gcp-mon-log git:(main) sed 's|variable|'$EMAIL_NOTIFICATION'|g' rising_network_packets_policy_template.json > rising_network_packets_policy.json`   
+`➜  gcp-mon-log git:(main) gcloud alpha monitoring policies create --policy-from-file rising_network_packets_policy.json`   
+`➜  gcp-mon-log git:(main) export POLICY_1=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==1')`   
+`➜  gcp-mon-log git:(main) export POLICY_2=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==2')`   
+`➜  gcp-mon-log git:(main) gcloud alpha monitoring policies list`   
 
 <img width="682" alt="Created alert" src="https://user-images.githubusercontent.com/38410965/113599813-26862980-960d-11eb-9413-dd0060c2b4ec.png">
 
@@ -266,7 +266,7 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 - [x] stop the instance “larry”   
 - [x] receive email notification   
 
-➜  gcp-mon-log git:(main) ✗ gcloud compute instances stop $INSTANCE --zone us-central1-a
+`➜  gcp-mon-log git:(main) ✗ gcloud compute instances stop $INSTANCE --zone us-central1-a`     
 
 <img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599861-3998f980-960d-11eb-8e27-f0f21cb18370.png">
 
@@ -281,7 +281,7 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 - [x] start the instance “larry”   
 - [x] receive email notification 30 minutes later   
 
-➜  gcp-mon-log git:(main) ✗ gcloud compute instances start $INSTANCE --zone us-central1-a   
+`➜  gcp-mon-log git:(main) ✗ gcloud compute instances start $INSTANCE --zone us-central1-a`   
 
 <img width="682" alt="concomputeviprojectsgcp-mon-leg-deppzon" src="https://user-images.githubusercontent.com/38410965/113599910-49b0d900-960d-11eb-856c-ad54cabeb9b2.png">
 
@@ -296,10 +296,10 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 - [x] create a dashboard   
 - [x] make DASH an environment variable   
 
-➜  gcp-mon-log git:(main) gcloud monitoring dashboards create --config-from-file dash.json   
-➜  gcp-mon-log git:(main) gcloud monitoring dashboards list   
-➜  gcp-mon-log git:(main) export DASH=$(gcloud monitoring dashboards list --format="value(name)")   
-➜  gcp-mon-log git:(main) echo $DASH   
+`➜  gcp-mon-log git:(main) gcloud monitoring dashboards create --config-from-file dash.json`   
+`➜  gcp-mon-log git:(main) gcloud monitoring dashboards list`   
+`➜  gcp-mon-log git:(main) export DASH=$(gcloud monitoring dashboards list --format="value(name)")`   
+`➜  gcp-mon-log git:(main) echo $DASH`   
 
 <img width="682" alt="80x  gcp-mon-log - stevedepp@Steves-MBP-2 -  9gcp-mon-log - -zsh -" src="https://user-images.githubusercontent.com/38410965/113599945-546b6e00-960d-11eb-9b77-489836869290.png">
 
@@ -324,10 +324,10 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 - [x] delete notification EMAIL_NOTIFICATION   
 - [x] delete instance INSTANCE   
 
-➜  gcp-mon-log git:(main) gcloud monitoring dashboards delete $DASH   
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_1   
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_2   
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels delete $EMAIL_NOTIFICATION   
-➜  gcp-mon-log git:(main) gcloud compute instances delete $INSTANCE --zone us-central1-a   
+`➜  gcp-mon-log git:(main) gcloud monitoring dashboards delete $DASH`   
+`➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_1`   
+`➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_2`   
+`➜  gcp-mon-log git:(main) gcloud beta monitoring channels delete $EMAIL_NOTIFICATION`   
+`➜  gcp-mon-log git:(main) gcloud compute instances delete $INSTANCE --zone us-central1-a`   
 
 <img width="682" alt="attached disks configured" src="https://user-images.githubusercontent.com/38410965/113600063-7a910e00-960d-11eb-8ab9-bc0dcc37d9f7.png">
