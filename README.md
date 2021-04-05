@@ -66,6 +66,7 @@ Create a compute instance “larry”
 ➜  gcp-mon-log git:(main) gcloud compute instances create larry --boot-disk-device-name debian-cloud --zone us-central1-a --machine-type n1-standard-1 --tags http-server --scopes cloud-platform
 ➜  gcp-mon-log git:(main) export INSTANCE=$(gcloud compute instances describe larry --zone us-central1-a --format="value(id)")
 
+<img width="682" alt="list --available grep" src="https://user-images.githubusercontent.com/38410965/113598780-a612f900-960b-11eb-8e6d-b3e839e5e11d.png">
 
 #
 
@@ -81,6 +82,7 @@ Advantage:  If create a named firewall then can control which instances get whic
 ➜  gcp-mon-log git:(main) export EXTERNAL_IP=$(gcloud compute instances list --project $PROJECT | awk 'NR==2{print $5}')
 ➜  gcp-mon-log git:(main) gcloud compute ssh larry --zone us-central1-a
 
+<img width="682" alt="waiting for SSH key to propagate" src="https://user-images.githubusercontent.com/38410965/113598811-b4f9ab80-960b-11eb-8308-060409db6b02.png">
 
 #
 
@@ -95,7 +97,9 @@ y
 stevedepp@larry:~$ sudo service apache2 restart
 stevedepp@larry:~$ curl http://34.123.20.84
 
+<img width="682" alt="the exact distribution terms for each program are described in the" src="https://user-images.githubusercontent.com/38410965/113598868-c642b800-960b-11eb-8bf4-22dec37c87a7.png">
 
+<img width="952" alt="Apache2 Debian Default Page" src="https://user-images.githubusercontent.com/38410965/113598877-c8a51200-960b-11eb-8478-8c07c8897c9b.png">
 
 #
 
@@ -112,6 +116,7 @@ stevedepp@larry:~$ sudo apt-get update
 stevedepp@larry:~$ sudo apt-get install stackdriver-agent
 stevedepp@larry:~$ sudo service stackdriver-agent start
 
+<img width="682" alt="Hit3 httpdeb debian orgdebian buster InRelease" src="https://user-images.githubusercontent.com/38410965/113598918-d9558800-960b-11eb-92a6-7ecc9a18b7ae.png">
 
 #
 
@@ -123,6 +128,8 @@ Install the logging agent
 stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh
 stevedepp@larry:~$ sudo bash add-logging-agent-repo.sh
 stevedepp@larry:~$ sudo apt-get update
+
+<img width="682" alt="-cloud-packages-archive-keyring" src="https://user-images.githubusercontent.com/38410965/113598954-e4a8b380-960b-11eb-8720-3010bfa680be.png">![Uploading gcp-mon-log.png…]()
 
 
 #
@@ -137,6 +144,7 @@ stevedepp@larry:~$ sudo apt-get install google-fluentd
 stevedepp@larry:~$ sudo apt-get install google-fluentd-catch-all-config-structured
 stevedepp@larry:~$ sudo service google-fluentd start
 
+<img width="682" alt="Hit3 httpdeb debian orgdebian buster InRelease" src="https://user-images.githubusercontent.com/38410965/113598918-d9558800-960b-11eb-92a6-7ecc9a18b7ae.png">
 
 #
 
