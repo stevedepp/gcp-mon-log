@@ -1,5 +1,4 @@
-# gcp-mon-log
-basic monitoring and logging for a gcp instance
+## GCP logging and monitoring an compute instance 
 
 please click on the video below for sound.
 
@@ -8,11 +7,15 @@ please click on the video below for sound.
 
 #
 
-Demo Video 9
-GCP logging and monitoring an compute instance 
-Steve Depp MSDS 434 section 55 
+> Hello everyone and thank you for watching my video of setting up monitoring and logging for a GCP instance.
 
-Setup local
+**Demo Video 9**
+
+### GCP logging and monitoring an compute instance 
+
+**Steve Depp MSDS 434 section 55** 
+
+### Setup local**
 - [x] cd into demo directory
 - [x] clone my repo
 - [x] cd into the repo
@@ -25,7 +28,9 @@ Setup local
 
 #
 
-Setup GCP
+> First step is to set up locally.  Then, set up a GCP project and link it to your billing account.  I will be setting up environment variables as we go to facilitate tear down later on.
+
+### Setup GCP
 
 - [x] GCP accounts
 - [x] GCP projects
@@ -47,10 +52,11 @@ Setup GCP
 
 <img width="682" alt="billinpEnabled true" src="https://user-images.githubusercontent.com/38410965/113598570-52a0ab00-960b-11eb-8329-85e1f363e86d.png">
 
-
 #
 
-Create a compute instance “larry”
+> We then create a compute instance…. named larry in this case. 
+
+### Create a compute instance “larry”
 
 - [x] look at this project’s APIs 
 - [x] turn on compute API
@@ -70,8 +76,9 @@ Create a compute instance “larry”
 
 #
 
+> Then, create a firewall to allow HTTP access.   It is worth nothing that naming a firewall has distinct advantages.  GCP has some odd features when it comes to ticking the box for HTTPS and HTTP on the command line. 
 
-Create compute firewall
+### Create compute firewall
 
 Advantage:  If create a named firewall then can control which instances get which firewalls. If simple check firewall HTTP in console, cannot control future firewalls. 
 - [x] create named firewall
@@ -86,7 +93,9 @@ Advantage:  If create a named firewall then can control which instances get whic
 
 #
 
-Install Apache server & confirm traffic
+> Next, we Install and confirm traffic on the server, ...
+
+### Install Apache server & confirm traffic
 
 - [x] install apache server 
 - [x] confirm serving HTTP traffic
@@ -103,7 +112,9 @@ stevedepp@larry:~$ curl http://34.123.20.84
 
 #
 
-Install monitoring agents
+> ... instal monitoring agents, ...
+
+### Install monitoring agents
 
 - [x] curl cloud monitoring agent repo
 - [x] add & update monitoring agent
@@ -120,7 +131,9 @@ stevedepp@larry:~$ sudo service stackdriver-agent start
 
 #
 
-Install the logging agent
+> ... instal a logging agent, ...
+
+### Install the logging agent
 
 - [x] curl cloud logging agent repo
 - [x] add & update logging agent
@@ -133,7 +146,7 @@ stevedepp@larry:~$ sudo apt-get update
 
 #
 
-Install the logging agent (cont)
+### Install the logging agent (cont)
 
 - [x] install the logging agent
 - [x] set to structured logs
@@ -147,7 +160,9 @@ stevedepp@larry:~$ sudo service google-fluentd start
 
 #
 
-Create a Monitoring Workspace 
+> Create a monitoring workspace.  This is the only step that cannot be done at the command line.
+
+### Create a Monitoring Workspace 
 
 This can only be done from console.
 
@@ -157,7 +172,9 @@ This can only be done from console.
 
 #
 
-Create a Monitoring Workspace 
+> A work space sits along side a project to perfrom alerts notifcations etc.
+
+### Create a Monitoring Workspace 
 
 ![Google Cloud](https://user-images.githubusercontent.com/38410965/113599672-eb83f600-960c-11eb-81a2-57bcfe7cfd90.png)
 
@@ -168,8 +185,7 @@ Create a Monitoring Workspace
 
 #
 
-
-Create a Monitoring Workspace 
+### Create a Monitoring Workspace 
 
 ![Google Cloud](https://user-images.githubusercontent.com/38410965/113599711-fdfe2f80-960c-11eb-952d-70128eff02a7.png)
 
@@ -177,20 +193,19 @@ Create a Monitoring Workspace
 
 <img width="783" alt="Note You must use the Google Cloud Console to create a Workspace" src="https://user-images.githubusercontent.com/38410965/113599740-08b8c480-960d-11eb-874e-d8cf7282cde8.png">
 
-
 #
 
-Create a Monitoring Workspace 
+> 
+
+### Create a Monitoring Workspace 
 
 <img width="952" alt="Welcome to Monitoring!" src="https://user-images.githubusercontent.com/38410965/113599758-0fdfd280-960d-11eb-8946-be9a3d579feb.png">
 
-
-
-
-
 #
 
-Create an email notification
+> Then, configure an email notifciton service.
+
+### Create an email notification
 
 - [x] create an email notification
 - [x] make EMAIL_NOTIFICATION an environment variable
@@ -203,10 +218,11 @@ Create an email notification
 
 <img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599776-166e4a00-960d-11eb-8d5a-ab033151cbd0.png">
 
-
 #
 
-Create an uptime check
+> An uptime check can only be configured via the API or console, ie not via gcloud CLT.  
+
+### Create an uptime check
 
 - [x] amend uptime check template for the new notification id
 - [x] curl the API to create an uptime check
@@ -217,12 +233,13 @@ Create an uptime check
 -H "Content-Type: application/json; charset=utf-8" \
 https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @uptime_check.json 
 
-
 <img width="682" alt="curl - POST" src="https://user-images.githubusercontent.com/38410965/113599786-1cfcc180-960d-11eb-9d69-11e1733ce994.png">
 
 #
 
-Create 2 monitoring policies
+> Next, I make 2 monitoring policies: one that checks on network packets and the other checks on whether the instanced is running or not.
+
+### Create 2 monitoring policies
 
 - [x] amend uptime policy template for the new notification id
 - [x] create uptime policy
@@ -242,26 +259,26 @@ Create 2 monitoring policies
 
 <img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599834-2d14a100-960d-11eb-81ce-46fd5ff5a6ab.png">
 
-
 #
 
-Test uptime check & email notification 
+> the latter is an uptime check and the policy is configured so that if the instance is not running for 60 seconds I get an email.  So here I shut the instance down at the command line and receive an email about 2 minutes later
+
+### Test uptime check & email notification 
 
 - [x] stop the instance “larry”
 - [x] receive email notification
 
 ➜  gcp-mon-log git:(main) ✗ gcloud compute instances stop $INSTANCE --zone us-central1-a
 
-
 <img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599861-3998f980-960d-11eb-8e27-f0f21cb18370.png">
 
 <img width="842" alt="Uptime not for 60 seconds" src="https://user-images.githubusercontent.com/38410965/113599879-3e5dad80-960d-11eb-9fcc-f4cf2f158870.png">
 
-
-
 #
 
-Test curing uptime check & email notification 
+> 
+
+### Test curing uptime check & email notification 
 
 - [x] start the instance “larry”
 - [x] receive email notification 30 minutes later
@@ -272,13 +289,11 @@ Test curing uptime check & email notification
 
 <img width="842" alt="Uptime not for 60 seconds" src="https://user-images.githubusercontent.com/38410965/113599920-4d446000-960d-11eb-80a5-20b582bb2c1e.png">
 
-
-
-
 #
 
+> 
 
-Make a dashboard
+### Make a dashboard
 
 - [x] create a dashboard
 - [x] make DASH an environment variable
@@ -290,38 +305,21 @@ Make a dashboard
 
 <img width="682" alt="80x  gcp-mon-log - stevedepp@Steves-MBP-2 -  9gcp-mon-log - -zsh -" src="https://user-images.githubusercontent.com/38410965/113599945-546b6e00-960d-11eb-9b77-489836869290.png">
 
-
 #
 
+> so you could pass someone that yaml or json file containing the config if they like yours
 
-Look at dashboard
-
-
-#
-
-Tear it down
-delete dashboard DASH
-delete policy POLICY_1
-delete policy POLICY_2
-delete notification EMAIL_NOTIFICATION
-delete instance INSTANCE
-➜  gcp-mon-log git:(main) gcloud monitoring dashboards delete $DASH
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_1
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_2
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels delete $EMAIL_NOTIFICATION
-➜  gcp-mon-log git:(main) gcloud compute instances delete $INSTANCE --zone us-central1-a
-
-
+### Look at dashboard
 
 <img width="952" alt="E Google Cloud Platform" src="https://user-images.githubusercontent.com/38410965/113599993-6220f380-960d-11eb-9b41-25a2cfb89c2e.png">
 
-
 <img width="952" alt="E Google Cloud Platform" src="https://user-images.githubusercontent.com/38410965/113600013-69e09800-960d-11eb-8fe9-bb6c55e99eba.png">
 
+#
 
+> Finally tear it all down.  Thank you for watching. 
 
-
-Tear it down
+### Tear it down
 delete dashboard DASH
 delete policy POLICY_1
 delete policy POLICY_2
@@ -333,7 +331,4 @@ delete instance INSTANCE
 ➜  gcp-mon-log git:(main) gcloud beta monitoring channels delete $EMAIL_NOTIFICATION
 ➜  gcp-mon-log git:(main) gcloud compute instances delete $INSTANCE --zone us-central1-a
 
-
-
 <img width="682" alt="attached disks configured" src="https://user-images.githubusercontent.com/38410965/113600063-7a910e00-960d-11eb-8ab9-bc0dcc37d9f7.png">
-
