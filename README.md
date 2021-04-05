@@ -159,6 +159,11 @@ This can only be done from console.
 
 Create a Monitoring Workspace 
 
+![Google Cloud](https://user-images.githubusercontent.com/38410965/113599672-eb83f600-960c-11eb-81a2-57bcfe7cfd90.png)
+
+<img width="952" alt="Building your Workspace" src="https://user-images.githubusercontent.com/38410965/113599685-f0e14080-960c-11eb-97b3-c35189cfc7a3.png">
+
+<img width="783" alt="Note You must use the Google Cloud Console to create a Workspace" src="https://user-images.githubusercontent.com/38410965/113599695-f5a5f480-960c-11eb-8635-611b4befb1b3.png">
 
 
 #
@@ -166,11 +171,21 @@ Create a Monitoring Workspace
 
 Create a Monitoring Workspace 
 
+![Google Cloud](https://user-images.githubusercontent.com/38410965/113599711-fdfe2f80-960c-11eb-952d-70128eff02a7.png)
+
+<img width="952" alt="Finishing Workspace creation" src="https://user-images.githubusercontent.com/38410965/113599725-02c2e380-960d-11eb-8ddf-ff435914a599.png">
+
+<img width="783" alt="Note You must use the Google Cloud Console to create a Workspace" src="https://user-images.githubusercontent.com/38410965/113599740-08b8c480-960d-11eb-874e-d8cf7282cde8.png">
 
 
 #
 
 Create a Monitoring Workspace 
+
+<img width="952" alt="Welcome to Monitoring!" src="https://user-images.githubusercontent.com/38410965/113599758-0fdfd280-960d-11eb-8946-be9a3d579feb.png">
+
+
+
 
 
 #
@@ -186,6 +201,7 @@ Create an email notification
 ➜  gcp-mon-log git:(main) export EMAIL_NOTIFICATION=( $(jq -r '.[].name' notifs.json) )
 ➜  gcp-mon-log git:(main) echo $EMAIL_NOTIFICATION
 
+<img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599776-166e4a00-960d-11eb-8d5a-ab033151cbd0.png">
 
 
 #
@@ -202,6 +218,7 @@ Create an uptime check
 https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @uptime_check.json 
 
 
+<img width="682" alt="curl - POST" src="https://user-images.githubusercontent.com/38410965/113599786-1cfcc180-960d-11eb-9d69-11e1733ce994.png">
 
 #
 
@@ -221,6 +238,9 @@ Create 2 monitoring policies
 ➜  gcp-mon-log git:(main) export POLICY_2=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==2')
 ➜  gcp-mon-log git:(main) gcloud alpha monitoring policies list
 
+<img width="682" alt="Created alert" src="https://user-images.githubusercontent.com/38410965/113599813-26862980-960d-11eb-9413-dd0060c2b4ec.png">
+
+<img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599834-2d14a100-960d-11eb-81ce-46fd5ff5a6ab.png">
 
 
 #
@@ -233,6 +253,12 @@ Test uptime check & email notification
 ➜  gcp-mon-log git:(main) ✗ gcloud compute instances stop $INSTANCE --zone us-central1-a
 
 
+<img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599861-3998f980-960d-11eb-8e27-f0f21cb18370.png">
+
+<img width="842" alt="Uptime not for 60 seconds" src="https://user-images.githubusercontent.com/38410965/113599879-3e5dad80-960d-11eb-9fcc-f4cf2f158870.png">
+
+
+
 #
 
 Test curing uptime check & email notification 
@@ -241,6 +267,12 @@ Test curing uptime check & email notification
 - [x] receive email notification 30 minutes later
 
 ➜  gcp-mon-log git:(main) ✗ gcloud compute instances start $INSTANCE --zone us-central1-a
+
+<img width="682" alt="concomputeviprojectsgcp-mon-leg-deppzon" src="https://user-images.githubusercontent.com/38410965/113599910-49b0d900-960d-11eb-856c-ad54cabeb9b2.png">
+
+<img width="842" alt="Uptime not for 60 seconds" src="https://user-images.githubusercontent.com/38410965/113599920-4d446000-960d-11eb-80a5-20b582bb2c1e.png">
+
+
 
 
 #
@@ -256,6 +288,7 @@ Make a dashboard
 ➜  gcp-mon-log git:(main) export DASH=$(gcloud monitoring dashboards list --format="value(name)")
 ➜  gcp-mon-log git:(main) echo $DASH
 
+<img width="682" alt="80x  gcp-mon-log - stevedepp@Steves-MBP-2 -  9gcp-mon-log - -zsh -" src="https://user-images.githubusercontent.com/38410965/113599945-546b6e00-960d-11eb-9b77-489836869290.png">
 
 
 #
@@ -277,3 +310,30 @@ delete instance INSTANCE
 ➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_2
 ➜  gcp-mon-log git:(main) gcloud beta monitoring channels delete $EMAIL_NOTIFICATION
 ➜  gcp-mon-log git:(main) gcloud compute instances delete $INSTANCE --zone us-central1-a
+
+
+
+<img width="952" alt="E Google Cloud Platform" src="https://user-images.githubusercontent.com/38410965/113599993-6220f380-960d-11eb-9b41-25a2cfb89c2e.png">
+
+
+<img width="952" alt="E Google Cloud Platform" src="https://user-images.githubusercontent.com/38410965/113600013-69e09800-960d-11eb-8fe9-bb6c55e99eba.png">
+
+
+
+
+Tear it down
+delete dashboard DASH
+delete policy POLICY_1
+delete policy POLICY_2
+delete notification EMAIL_NOTIFICATION
+delete instance INSTANCE
+➜  gcp-mon-log git:(main) gcloud monitoring dashboards delete $DASH
+➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_1
+➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_2
+➜  gcp-mon-log git:(main) gcloud beta monitoring channels delete $EMAIL_NOTIFICATION
+➜  gcp-mon-log git:(main) gcloud compute instances delete $INSTANCE --zone us-central1-a
+
+
+
+<img width="682" alt="attached disks configured" src="https://user-images.githubusercontent.com/38410965/113600063-7a910e00-960d-11eb-8ab9-bc0dcc37d9f7.png">
+
