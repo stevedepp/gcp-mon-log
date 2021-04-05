@@ -16,13 +16,13 @@ please click on the video below for sound.
 **Steve Depp MSDS 434 section 55** 
 
 ### Setup local**
-- [x] cd into demo directory
-- [x] clone my repo
-- [x] cd into the repo
+- [x] cd into demo directory   
+- [x] clone my repo   
+- [x] cd into the repo   
 
-➜  gcp-mon-log git:(main) cd Documents/Personal/MSDS/434/week\ 09/
-➜  gcp-mon-log git:(main) git clone https://github.com/stevedepp/gcp-mon-log.git
-➜  gcp-mon-log git:(main) cd gcp-mon-log
+➜  gcp-mon-log git:(main) cd Documents/Personal/MSDS/434/week\ 09/   
+➜  gcp-mon-log git:(main) git clone https://github.com/stevedepp/gcp-mon-log.git   
+➜  gcp-mon-log git:(main) cd gcp-mon-log   
 
 <img width="682" alt="remote Total 14 (delta 5), reused 10 (delta 4), pack-reused 0" src="https://user-images.githubusercontent.com/38410965/113597987-79121680-960a-11eb-88d0-66c0aa6fbf74.png">
 
@@ -32,23 +32,23 @@ please click on the video below for sound.
 
 ### Setup GCP
 
-- [x] GCP accounts
-- [x] GCP projects
-- [x] create project
-- [x] make project the default project
-- [x] confirm project is default
-- [x] export project id
-- [x] export account id
-- [x] associated project with account for billing
+- [x] GCP accounts   
+- [x] GCP projects   
+- [x] create project   
+- [x] make project the default project   
+- [x] confirm project is default   
+- [x] export project id   
+- [x] export account id   
+- [x] associated project with account for billing      
 
-➜  gcp-mon-log git:(main) gcloud alpha billing accounts list
-➜  gcp-mon-log git:(main) gcloud projects list
-➜  gcp-mon-log git:(main) gcloud projects create gcp-mon-log-depp 
-➜  gcp-mon-log git:(main) gcloud config set project gcp-mon-log-depp
-➜  gcp-mon-log git:(main) gcloud config get-value core/project 
-➜  gcp-mon-log git:(main) export PROJECT=$(gcloud config get-value core/project)
-➜  gcp-mon-log git:(main) export ACCOUNT=$(gcloud alpha billing accounts list | awk 'NR==2{print $1}')
-➜  gcp-mon-log git:(main) gcloud beta billing projects link $PROJECT --billing-account $ACCOUNT 
+➜  gcp-mon-log git:(main) gcloud alpha billing accounts list   
+➜  gcp-mon-log git:(main) gcloud projects list   
+➜  gcp-mon-log git:(main) gcloud projects create gcp-mon-log-depp    
+➜  gcp-mon-log git:(main) gcloud config set project gcp-mon-log-depp   
+➜  gcp-mon-log git:(main) gcloud config get-value core/project    
+➜  gcp-mon-log git:(main) export PROJECT=$(gcloud config get-value core/project)   
+➜  gcp-mon-log git:(main) export ACCOUNT=$(gcloud alpha billing accounts list | awk 'NR==2{print $1}')   
+➜  gcp-mon-log git:(main) gcloud beta billing projects link $PROJECT --billing-account $ACCOUNT    
 
 <img width="682" alt="billinpEnabled true" src="https://user-images.githubusercontent.com/38410965/113598570-52a0ab00-960b-11eb-8329-85e1f363e86d.png">
 
@@ -58,19 +58,19 @@ please click on the video below for sound.
 
 ### Create a compute instance “larry”
 
-- [x] look at this project’s APIs 
-- [x] turn on compute API
-- [x] look at available compute zones
-- [x] look at available compute instances
-- [x] create compute instance “larry”
-- [x] make INSTANCE an environment variable for instance-id
+- [x] look at this project’s APIs    
+- [x] turn on compute API   
+- [x] look at available compute zones   
+- [x] look at available compute instances   
+- [x] create compute instance “larry”   
+- [x] make INSTANCE an environment variable for instance-id   
 
-➜  gcp-mon-log git:(main) gcloud services list --available | grep 'compute'
-➜  gcp-mon-log git:(main) gcloud services enable compute.googleapis.com
-➜  gcp-mon-log git:(main) gcloud compute zones list | grep 'us-centr'
-➜  gcp-mon-log git:(main) gcloud compute machine-types list --zones us-central1-a | grep 'n1-standard'
-➜  gcp-mon-log git:(main) gcloud compute instances create larry --boot-disk-device-name debian-cloud --zone us-central1-a --machine-type n1-standard-1 --tags http-server --scopes cloud-platform
-➜  gcp-mon-log git:(main) export INSTANCE=$(gcloud compute instances describe larry --zone us-central1-a --format="value(id)")
+➜  gcp-mon-log git:(main) gcloud services list --available | grep 'compute'   
+➜  gcp-mon-log git:(main) gcloud services enable compute.googleapis.com   
+➜  gcp-mon-log git:(main) gcloud compute zones list | grep 'us-centr'   
+➜  gcp-mon-log git:(main) gcloud compute machine-types list --zones us-central1-a | grep 'n1-standard'   
+➜  gcp-mon-log git:(main) gcloud compute instances create larry --boot-disk-device-name debian-cloud --zone us-central1-a --machine-type n1-standard-1 --tags http-server --scopes cloud-platform   
+➜  gcp-mon-log git:(main) export INSTANCE=$(gcloud compute instances describe larry --zone us-central1-a --format="value(id)")   
 
 <img width="682" alt="list --available grep" src="https://user-images.githubusercontent.com/38410965/113598780-a612f900-960b-11eb-8e6d-b3e839e5e11d.png">
 
@@ -80,14 +80,14 @@ please click on the video below for sound.
 
 ### Create compute firewall
 
-Advantage:  If create a named firewall then can control which instances get which firewalls. If simple check firewall HTTP in console, cannot control future firewalls. 
-- [x] create named firewall
-- [x] make EXTERNAL_IP an environment variable
-- [x] ssh into compute instance
-
-➜  gcp-mon-log git:(main) gcloud compute --project $PROJECT firewall-rules create default-allow-http --target-tags=http-server --action=ALLOW --rules=tcp:80
+Advantage:  If create a named firewall then can control which instances get which firewalls. If simple check firewall HTTP in console, cannot control future firewalls.    
+- [x] create named firewall   
+- [x] make EXTERNAL_IP an environment variable   
+- [x] ssh into compute instance   
+   
+➜  gcp-mon-log git:(main) gcloud compute --project $PROJECT firewall-rules create default-allow-http --target-tags=http-server --action=ALLOW --rules=tcp:80   
 ➜  gcp-mon-log git:(main) export EXTERNAL_IP=$(gcloud compute instances list --project $PROJECT | awk 'NR==2{print $5}')
-➜  gcp-mon-log git:(main) gcloud compute ssh larry --zone us-central1-a
+➜  gcp-mon-log git:(main) gcloud compute ssh larry --zone us-central1-a   
 
 <img width="682" alt="waiting for SSH key to propagate" src="https://user-images.githubusercontent.com/38410965/113598811-b4f9ab80-960b-11eb-8308-060409db6b02.png">
 
@@ -97,14 +97,14 @@ Advantage:  If create a named firewall then can control which instances get whic
 
 ### Install Apache server & confirm traffic
 
-- [x] install apache server 
-- [x] confirm serving HTTP traffic
+- [x] install apache server    
+- [x] confirm serving HTTP traffic   
 
-stevedepp@larry:~$ sudo apt-get update
-stevedepp@larry:~$sudo apt-get install apache2 php7.0
-y
-stevedepp@larry:~$ sudo service apache2 restart
-stevedepp@larry:~$ curl http://34.123.20.84
+stevedepp@larry:~$ sudo apt-get update   
+stevedepp@larry:~$sudo apt-get install apache2 php7.0   
+y   
+stevedepp@larry:~$ sudo service apache2 restart   
+stevedepp@larry:~$ curl http://34.123.20.84   
 
 <img width="682" alt="the exact distribution terms for each program are described in the" src="https://user-images.githubusercontent.com/38410965/113598868-c642b800-960b-11eb-8bf4-22dec37c87a7.png">
 
@@ -116,16 +116,16 @@ stevedepp@larry:~$ curl http://34.123.20.84
 
 ### Install monitoring agents
 
-- [x] curl cloud monitoring agent repo
-- [x] add & update monitoring agent
-- [x] install the monitoring agent
-- [x] start the monitoring agent
+- [x] curl cloud monitoring agent repo   
+- [x] add & update monitoring agent   
+- [x] install the monitoring agent   
+- [x] start the monitoring agent   
 
-stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh
-stevedepp@larry:~$ sudo bash add-monitoring-agent-repo.sh
-stevedepp@larry:~$ sudo apt-get update
-stevedepp@larry:~$ sudo apt-get install stackdriver-agent
-stevedepp@larry:~$ sudo service stackdriver-agent start
+stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh   
+stevedepp@larry:~$ sudo bash add-monitoring-agent-repo.sh   
+stevedepp@larry:~$ sudo apt-get update   
+stevedepp@larry:~$ sudo apt-get install stackdriver-agent   
+stevedepp@larry:~$ sudo service stackdriver-agent start   
 
 <img width="682" alt="Hit3 httpdeb debian orgdebian buster InRelease" src="https://user-images.githubusercontent.com/38410965/113598918-d9558800-960b-11eb-92a6-7ecc9a18b7ae.png">
 
@@ -135,12 +135,12 @@ stevedepp@larry:~$ sudo service stackdriver-agent start
 
 ### Install the logging agent
 
-- [x] curl cloud logging agent repo
-- [x] add & update logging agent
+- [x] curl cloud logging agent repo   
+- [x] add & update logging agent   
 
-stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh
-stevedepp@larry:~$ sudo bash add-logging-agent-repo.sh
-stevedepp@larry:~$ sudo apt-get update
+stevedepp@larry:~$ curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh   
+stevedepp@larry:~$ sudo bash add-logging-agent-repo.sh   
+stevedepp@larry:~$ sudo apt-get update   
 
 <img width="682" alt="-cloud-packages-archive-keyring" src="https://user-images.githubusercontent.com/38410965/113598954-e4a8b380-960b-11eb-8720-3010bfa680be.png">
 
@@ -148,23 +148,23 @@ stevedepp@larry:~$ sudo apt-get update
 
 ### Install the logging agent (cont)
 
-- [x] install the logging agent
-- [x] set to structured logs
-- [x] start the logging agent
+- [x] install the logging agent   
+- [x] set to structured logs   
+- [x] start the logging agent   
 
-stevedepp@larry:~$ sudo apt-get install google-fluentd
-stevedepp@larry:~$ sudo apt-get install google-fluentd-catch-all-config-structured
-stevedepp@larry:~$ sudo service google-fluentd start
+stevedepp@larry:~$ sudo apt-get install google-fluentd   
+stevedepp@larry:~$ sudo apt-get install google-fluentd-catch-all-config-structured   
+stevedepp@larry:~$ sudo service google-fluentd start   
 
 <img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599159-394c2e80-960c-11eb-99d8-1e2ce6bfa018.png">
 
 #
 
-> Create a monitoring workspace.  This is the only step that cannot be done at the command line.
+> Create a monitoring workspace.  This is the only step that cannot be done at the command line.  [strike that as I mention below, the uptime check also cannot be configured via the GC CLI]
 
 ### Create a Monitoring Workspace 
 
-This can only be done from console.
+This can only be done from console.      
 
 ![Google Cloud](https://user-images.githubusercontent.com/38410965/113599195-4701b400-960c-11eb-9269-567ffcbaece2.png)
 
@@ -205,14 +205,14 @@ This can only be done from console.
 
 ### Create an email notification
 
-- [x] create an email notification
-- [x] make EMAIL_NOTIFICATION an environment variable
+- [x] create an email notification   
+- [x] make EMAIL_NOTIFICATION an environment variable   
 
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels create --channel-content-from-file email-notification.json
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels list
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels --format json list > notifs.json
-➜  gcp-mon-log git:(main) export EMAIL_NOTIFICATION=( $(jq -r '.[].name' notifs.json) )
-➜  gcp-mon-log git:(main) echo $EMAIL_NOTIFICATION
+➜  gcp-mon-log git:(main) gcloud beta monitoring channels create --channel-content-from-file email-notification.json   
+➜  gcp-mon-log git:(main) gcloud beta monitoring channels list   
+➜  gcp-mon-log git:(main) gcloud beta monitoring channels --format json list > notifs.json   
+➜  gcp-mon-log git:(main) export EMAIL_NOTIFICATION=( $(jq -r '.[].name' notifs.json) )   
+➜  gcp-mon-log git:(main) echo $EMAIL_NOTIFICATION   
 
 <img width="682" alt="gcp-mon-log" src="https://user-images.githubusercontent.com/38410965/113599776-166e4a00-960d-11eb-8d5a-ab033151cbd0.png">
 
@@ -222,14 +222,14 @@ This can only be done from console.
 
 ### Create an uptime check
 
-- [x] amend uptime check template for the new notification id
-- [x] curl the API to create an uptime check
+- [x] amend uptime check template for the new notification id   
+- [x] curl the API to create an uptime check   
 
-➜  gcp-mon-log git:(main) sed 's|variable|'$INSTANCE'|g' uptime_check_template.json > uptime_check.json
+➜  gcp-mon-log git:(main) sed 's|variable|'$INSTANCE'|g' uptime_check_template.json > uptime_check.json   
 ➜  gcp-mon-log git:(main) curl -X POST \
 -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
 -H "Content-Type: application/json; charset=utf-8" \
-https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @uptime_check.json 
+https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @uptime_check.json    
 
 <img width="682" alt="curl - POST" src="https://user-images.githubusercontent.com/38410965/113599786-1cfcc180-960d-11eb-9d69-11e1733ce994.png">
 
@@ -239,19 +239,19 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 ### Create 2 monitoring policies
 
-- [x] amend uptime policy template for the new notification id
-- [x] create uptime policy
-- [x] amend network packets check template for the new notification id
-- [x] create network packets policy
-- [x] make POLICY_1 and POLICY_2 environment variables
+- [x] amend uptime policy template for the new notification id   
+- [x] create uptime policy   
+- [x] amend network packets check template for the new notification id   
+- [x] create network packets policy   
+- [x] make POLICY_1 and POLICY_2 environment variables   
 
-➜  gcp-mon-log git:(main) sed 's|variable|'$EMAIL_NOTIFICATION'|g' uptime_policy_template.json > uptime_policy.json
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies create --policy-from-file uptime_policy.json
-➜  gcp-mon-log git:(main) sed 's|variable|'$EMAIL_NOTIFICATION'|g' rising_network_packets_policy_template.json > rising_network_packets_policy.json
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies create --policy-from-file rising_network_packets_policy.json
-➜  gcp-mon-log git:(main) export POLICY_1=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==1')
-➜  gcp-mon-log git:(main) export POLICY_2=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==2')
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies list
+➜  gcp-mon-log git:(main) sed 's|variable|'$EMAIL_NOTIFICATION'|g' uptime_policy_template.json > uptime_policy.json   
+➜  gcp-mon-log git:(main) gcloud alpha monitoring policies create --policy-from-file uptime_policy.json   
+➜  gcp-mon-log git:(main) sed 's|variable|'$EMAIL_NOTIFICATION'|g' rising_network_packets_policy_template.json > rising_network_packets_policy.json   
+➜  gcp-mon-log git:(main) gcloud alpha monitoring policies create --policy-from-file rising_network_packets_policy.json   
+➜  gcp-mon-log git:(main) export POLICY_1=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==1')   
+➜  gcp-mon-log git:(main) export POLICY_2=$(gcloud alpha monitoring policies list --format='value(name)' | awk 'NR==2')   
+➜  gcp-mon-log git:(main) gcloud alpha monitoring policies list   
 
 <img width="682" alt="Created alert" src="https://user-images.githubusercontent.com/38410965/113599813-26862980-960d-11eb-9413-dd0060c2b4ec.png">
 
@@ -263,8 +263,8 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 ### Test uptime check & email notification 
 
-- [x] stop the instance “larry”
-- [x] receive email notification
+- [x] stop the instance “larry”   
+- [x] receive email notification   
 
 ➜  gcp-mon-log git:(main) ✗ gcloud compute instances stop $INSTANCE --zone us-central1-a
 
@@ -278,10 +278,10 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 ### Test curing uptime check & email notification 
 
-- [x] start the instance “larry”
-- [x] receive email notification 30 minutes later
+- [x] start the instance “larry”   
+- [x] receive email notification 30 minutes later   
 
-➜  gcp-mon-log git:(main) ✗ gcloud compute instances start $INSTANCE --zone us-central1-a
+➜  gcp-mon-log git:(main) ✗ gcloud compute instances start $INSTANCE --zone us-central1-a   
 
 <img width="682" alt="concomputeviprojectsgcp-mon-leg-deppzon" src="https://user-images.githubusercontent.com/38410965/113599910-49b0d900-960d-11eb-856c-ad54cabeb9b2.png">
 
@@ -293,13 +293,13 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 ### Make a dashboard
 
-- [x] create a dashboard
-- [x] make DASH an environment variable
+- [x] create a dashboard   
+- [x] make DASH an environment variable   
 
-➜  gcp-mon-log git:(main) gcloud monitoring dashboards create --config-from-file dash.json
-➜  gcp-mon-log git:(main) gcloud monitoring dashboards list
-➜  gcp-mon-log git:(main) export DASH=$(gcloud monitoring dashboards list --format="value(name)")
-➜  gcp-mon-log git:(main) echo $DASH
+➜  gcp-mon-log git:(main) gcloud monitoring dashboards create --config-from-file dash.json   
+➜  gcp-mon-log git:(main) gcloud monitoring dashboards list   
+➜  gcp-mon-log git:(main) export DASH=$(gcloud monitoring dashboards list --format="value(name)")   
+➜  gcp-mon-log git:(main) echo $DASH   
 
 <img width="682" alt="80x  gcp-mon-log - stevedepp@Steves-MBP-2 -  9gcp-mon-log - -zsh -" src="https://user-images.githubusercontent.com/38410965/113599945-546b6e00-960d-11eb-9b77-489836869290.png">
 
@@ -317,16 +317,17 @@ https://monitoring.googleapis.com/v3/projects/$PROJECT/uptimeCheckConfigs -d @up
 
 > Finally, tear it all down.  Thank you for watching. 
 
-### Tear it down
-delete dashboard DASH
-delete policy POLICY_1
-delete policy POLICY_2
-delete notification EMAIL_NOTIFICATION
-delete instance INSTANCE
-➜  gcp-mon-log git:(main) gcloud monitoring dashboards delete $DASH
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_1
-➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_2
-➜  gcp-mon-log git:(main) gcloud beta monitoring channels delete $EMAIL_NOTIFICATION
-➜  gcp-mon-log git:(main) gcloud compute instances delete $INSTANCE --zone us-central1-a
+### Tear it down   
+- [x] delete dashboard DASH   
+- [x] delete policy POLICY_1   
+- [x] delete policy POLICY_2   
+- [x] delete notification EMAIL_NOTIFICATION   
+- [x] delete instance INSTANCE   
+
+➜  gcp-mon-log git:(main) gcloud monitoring dashboards delete $DASH   
+➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_1   
+➜  gcp-mon-log git:(main) gcloud alpha monitoring policies delete $POLICY_2   
+➜  gcp-mon-log git:(main) gcloud beta monitoring channels delete $EMAIL_NOTIFICATION   
+➜  gcp-mon-log git:(main) gcloud compute instances delete $INSTANCE --zone us-central1-a   
 
 <img width="682" alt="attached disks configured" src="https://user-images.githubusercontent.com/38410965/113600063-7a910e00-960d-11eb-8ab9-bc0dcc37d9f7.png">
