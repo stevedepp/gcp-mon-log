@@ -7,7 +7,7 @@ please click on the video below for sound.
 
 #
 
-> Hello everyone and thank you for watching my video of setting up monitoring and logging for a GCP instance.
+> Hello everyone and thank you for watching my video of setting up monitoring and logging for a GCP instance.  First step is to set up locally.  
 
 **Demo Video 9**
 
@@ -28,7 +28,7 @@ please click on the video below for sound.
 
 #
 
-> First step is to set up locally.  Then, set up a GCP project and link it to your billing account.  I will be setting up environment variables as we go to facilitate tear down later on.
+> Then, set up a GCP project and link it to your billing account.  I will be setting up environment variables as we go to facilitate tear down later on.
 
 ### Setup GCP
 
@@ -54,7 +54,7 @@ please click on the video below for sound.
 
 #
 
-> We then create a compute instance…. named larry in this case. 
+> We then create a compute instance, named 'larry' in this case. 
 
 ### Create a compute instance “larry”
 
@@ -76,7 +76,7 @@ please click on the video below for sound.
 
 #
 
-> Then, create a firewall to allow HTTP access.   It is worth nothing that naming a firewall has distinct advantages.  GCP has some odd features when it comes to ticking the box for HTTPS and HTTP on the command line. 
+> Then, create a firewall to allow HTTP access.   It is worth nothing that naming a firewall has distinct advantages.  GCP has some odd features when it comes to ticking the box for HTTPS or HTTP on the command line. 
 
 ### Create compute firewall
 
@@ -194,8 +194,6 @@ This can only be done from console.
 <img width="783" alt="Note You must use the Google Cloud Console to create a Workspace" src="https://user-images.githubusercontent.com/38410965/113599740-08b8c480-960d-11eb-874e-d8cf7282cde8.png">
 
 #
-
-> 
 
 ### Create a Monitoring Workspace 
 
