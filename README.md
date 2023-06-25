@@ -1,6 +1,6 @@
 ## GCP logging and monitoring an compute instance 
 
-Please unmute the video below for sound. Below the video is a transcript and the associated slides, in case you prefer that presentation.
+Please unmute the video below for sound. Resolution at full screen is pretty good.  Below the video is a transcript and the associated slides, in case you prefer that presentation.
 
 <video src="https://user-images.githubusercontent.com/38410965/111925375-08ea8900-8a7f-11eb-8d7e-32a52d4cc6c6.mp4" autoplay controls loop muted style="max-width: 730px;">
 </video>
