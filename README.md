@@ -1,6 +1,10 @@
 ## GCP logging and monitoring an compute instance 
 
-please click on the video below for sound.
+please unmute the video below for sound.
+
+<video src="https://user-images.githubusercontent.com/38410965/111925375-08ea8900-8a7f-11eb-8d7e-32a52d4cc6c6.mp4" autoplay controls loop muted style="max-width: 730px;">
+</video>
+
 
 ![demo](https://user-images.githubusercontent.com/38410965/111925375-08ea8900-8a7f-11eb-8d7e-32a52d4cc6c6.mp4)
 
